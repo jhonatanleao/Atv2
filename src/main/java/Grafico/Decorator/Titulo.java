@@ -10,7 +10,7 @@ package Grafico.Decorator;
  */
 public class Titulo extends GraficoDecorator{
 
-    public Titulo(GraficoDecorator componente){
+    public Titulo(IComponente componente){
         super(componente);
         this.titulo = "Titulo algum";
     }

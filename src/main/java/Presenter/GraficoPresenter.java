@@ -5,7 +5,20 @@
  */
 package Presenter;
 
+import Collections.PessoaCollection;
+import Grafico.Builder.Diretor;
+import Grafico.Builder.GraficoHorizontalBuilder;
+import Grafico.Decorator.GraficoPessoa;
+import Grafico.Decorator.Titulo;
+import Grafico.Decorator.IComponente;
+import Util.CSVUtil;
+import Util.Math.Estatistica;
+import Util.Math.PorcentagemCasados;
+import Util.Math.PorcentagemSolteiros;
+import Util.Math.TotalCasados;
+import Util.Math.TotalSolteiros;
 import View.GraficoView;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,10 +28,24 @@ import java.awt.event.ActionListener;
  */
 public class GraficoPresenter {
     private GraficoView view;
+    private IComponente grafico;
 
     public GraficoPresenter(){
+        int valor1, valor2;
+        Estatistica totalCasados = new PorcentagemCasados();
+        Estatistica totalSolteiros = new PorcentagemSolteiros();       
+        CSVUtil readCSV = new CSVUtil();
+        PessoaCollection pColletion = new PessoaCollection();
+        pColletion = readCSV.read();
+        Diretor diretor = new Diretor(new GraficoHorizontalBuilder());
+        GraficoPessoa grafico = new GraficoPessoa(); 
+        grafico = diretor.buildGrafico(totalCasados.realizaConta(pColletion.getPessoas()), totalSolteiros.realizaConta(pColletion.getPessoas()));
+        grafico.criarGrafico();
+        
         view = new GraficoView();
-
+        
+        
+        
 
         this.view.getCkBoxTitulo().addActionListener(new ActionListener(){
             @Override
@@ -99,22 +126,36 @@ public class GraficoPresenter {
         this.view.getBtnFechar().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                restaurarPadrao();                   
+                 fechar();                                  
             }
         });
 
         this.view.getBtnRestaurarPadrao().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                fechar();                   
+                restaurarPadrao();
             }
         });
 
+        view.getJpnGrafico().setLayout(new BorderLayout());
+        view.getJpnGrafico().add(grafico.criarGrafico());
         view.setVisible(true);
     }
 
 
     public void titulo(){
+        try {
+            if (view.getCkBoxTitulo().isSelected()) {
+                System.out.println(12);
+                grafico = new Titulo(grafico);
+                //view.getJpnGrafico().setLayout(new BorderLayout());
+                //view.getJpnGrafico().add(grafico.criarGrafico());
+            } else {
+
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao acionar título " + e.getMessage());
+        }
 
     }
 
@@ -163,7 +204,7 @@ public class GraficoPresenter {
     }
 
     public void fechar(){
-
+        view.dispose();
     }
   
 }    

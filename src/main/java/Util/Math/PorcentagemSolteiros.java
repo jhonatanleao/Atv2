@@ -15,10 +15,11 @@ public class PorcentagemSolteiros implements Estatistica{
 
     @Override
     public int realizaConta(ArrayList<Pessoa> ListPessoa) {
-        int contador=0, total=0;
+        float contador=0, total=0;
         for(Pessoa pessoa : ListPessoa){
-            if(pessoa.getEstadoCivil().contains("Solteiros"))
+            if(pessoa.getEstadoCivil().equals("Solteiro(a)"))
                 contador++;
+            total++;
         }  
         
         float resultado = (contador/total)*100;

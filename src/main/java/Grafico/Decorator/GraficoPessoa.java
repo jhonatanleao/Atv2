@@ -39,7 +39,6 @@ public class GraficoPessoa extends IComponente{
     }
     
 
-
     @Override
     public IComponente reverter() {
         return this;

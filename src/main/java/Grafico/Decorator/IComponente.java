@@ -15,9 +15,10 @@ import org.jfree.data.category.CategoryDataset;
  *
  * @author jhonatan
  */
-abstract class IComponente {
+public abstract class IComponente {
     protected CategoryDataset dataSet;
     protected JFreeChart chart;
+    protected ChartPanel chartPanel;
     protected String titulo;
     protected String tituloVertical;
     protected String tituloHorizontal;
@@ -50,10 +51,10 @@ abstract class IComponente {
     
     public ChartPanel criarGrafico(){       
         
-        ChartPanel painelDoGrafico = new ChartPanel(this.chart);
-        painelDoGrafico.setPreferredSize(new Dimension(400, 400));
+        this.chartPanel = new ChartPanel(this.chart);
+        this.chartPanel.setPreferredSize(new Dimension(400, 400));
+        return this.chartPanel;
         
-        return painelDoGrafico;   
     }
     
     public IComponente() {
@@ -63,4 +64,11 @@ abstract class IComponente {
         
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "IComponente{" + "dataSet=" + dataSet + ", chart=" + chart + ", chartPanel=" + chartPanel + ", titulo=" + titulo + ", tituloVertical=" + tituloVertical + ", tituloHorizontal=" + tituloHorizontal + ", orientacao=" + orientacao + ", rotulo=" + rotulo + ", legenda=" + legenda + '}';
+    }
+    
+    
 }

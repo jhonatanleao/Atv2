@@ -5,22 +5,13 @@
 
 package pss.atv2;
 
-import Collections.PessoaCollection;
-import Model.Pessoa;
-import Util.CSVUtil;
-import Util.Math.Estatistica;
-import Util.Math.PorcentagemCasados;
-import java.util.ArrayList;
+
+import Presenter.GraficoPresenter;
+
 
 public class Atv2 {
 
     public static void main(String[] args) {
-        PessoaCollection pessoas = new PessoaCollection();
-        CSVUtil csv = new CSVUtil();
-        pessoas = csv.read();
-        
-        Estatistica conta = new PorcentagemCasados();
-        
-        System.out.println(conta.realizaConta(pessoas.getPessoas()));
+        new GraficoPresenter();
     }
 }
