@@ -29,6 +29,32 @@ abstract class IComponente {
         this.orientacao = orientacao;
     }
 
+    public CategoryDataset getDataSet() {
+        return dataSet;
+    }
+
+    public JFreeChart getChart() {
+        return chart;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getTituloVertical() {
+        return tituloVertical;
+    }
+
+    public String getTituloHorizontal() {
+        return tituloHorizontal;
+    }
+
+    public PlotOrientation getOrientacao() {
+        return orientacao;
+    }
+    
+    
+    
     public IComponente() {
     }
     

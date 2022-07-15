@@ -1,6 +1,7 @@
 package View;
 
 
+import Model.Pessoa;
 import java.awt.BorderLayout;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -28,20 +29,12 @@ public class GraficoView extends javax.swing.JFrame {
         initComponents();
         
         
-        ArrayList<Pessoa> listaDePessoas = new ArrayList<>();
-        
-        listaDePessoas.add(new Pessoa("Jubs", 69));
-        listaDePessoas.add(new Pessoa("Fofa", 90));
-        listaDePessoas.add(new Pessoa("Mineirona", 110));
-        listaDePessoas.add(new Pessoa("Dani", 25));
-        listaDePessoas.add(new Pessoa("Big Hell", 24));
-        
-        GraficoDeBarra graficoDeBarra = new GraficoDeBarra();
+
         
         //importante pro painel não ficar em branco
         this.jpnGrafico.setLayout(new BorderLayout());
         
-        this.jpnGrafico.add(graficoDeBarra.criarGrafico(listaDePessoas));
+        //this.jpnGrafico.add(graficoDeBarra.criarGrafico(listaDePessoas));
         
         pack();
         
