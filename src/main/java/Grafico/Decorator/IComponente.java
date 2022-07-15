@@ -5,6 +5,7 @@
 package Grafico.Decorator;
 
 import java.awt.Dimension;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
@@ -35,15 +36,26 @@ abstract class IComponente {
         this.legenda = legenda;
     }
 
-    public ChartPanel criarGrafico(){
+    public void createBarChart(){
 
-        ChartPanel painelDoGrafico = new ChartPanel(this.chart);
-        painelDoGrafico.setPreferredSize(new Dimension(400, 400));
-
-        return painelDoGrafico;
+        this.chart = ChartFactory.createBarChart(this.titulo, 
+                this.tituloVertical, 
+                this.tituloHorizontal, 
+                this.dataSet, 
+                this.orientacao, 
+                this.legenda, 
+                this.rotulo, 
+                false);
     }
     
-
+    public ChartPanel criarGrafico(){       
+        
+        ChartPanel painelDoGrafico = new ChartPanel(this.chart);
+        painelDoGrafico.setPreferredSize(new Dimension(400, 400));
+        
+        return painelDoGrafico;   
+    }
+    
     public IComponente() {
     }
     
