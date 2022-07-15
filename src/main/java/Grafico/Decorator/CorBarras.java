@@ -8,22 +8,11 @@ package Grafico.Decorator;
  *
  * @author jhonatan
  */
-public class Titulo extends GraficoDecorator{
+public class CorBarras extends GraficoDecorator{
 
-    public Titulo(GraficoDecorator componente){
+    public CorBarras(GraficoDecorator componente){
         super(componente);
-        this.titulo = "Titulo algum";
+        this.legenda = true;
     }
-    
-
-    @Override
-    public IComponente reverter() {
-        
-        return decoratedGrafico;
-    }
-
-
-    
-
     
 }

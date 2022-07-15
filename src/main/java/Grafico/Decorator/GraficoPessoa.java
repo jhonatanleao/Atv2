@@ -38,13 +38,7 @@ public class GraficoPessoa extends IComponente{
         this.chart = chart;
     }
     
-     public ChartPanel criarGrafico(){
 
-        ChartPanel painelDoGrafico = new ChartPanel(this.chart);
-        painelDoGrafico.setPreferredSize(new Dimension(400, 400));
-
-        return painelDoGrafico;
-    }
 
     @Override
     public IComponente reverter() {

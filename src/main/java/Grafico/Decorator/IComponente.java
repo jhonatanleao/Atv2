@@ -4,6 +4,8 @@
  */
 package Grafico.Decorator;
 
+import java.awt.Dimension;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.CategoryDataset;
@@ -19,42 +21,29 @@ abstract class IComponente {
     protected String tituloVertical;
     protected String tituloHorizontal;
     protected PlotOrientation orientacao;
+    protected boolean rotulo;
+    protected boolean legenda;
 
-    public IComponente(CategoryDataset dataSet, JFreeChart chart, String titulo, String tituloVertical, String tituloHorizontal, PlotOrientation orientacao) {
+    public IComponente(CategoryDataset dataSet, JFreeChart chart, String titulo, String tituloVertical, String tituloHorizontal, PlotOrientation orientacao, boolean rotulo, boolean legenda) {
         this.dataSet = dataSet;
         this.chart = chart;
         this.titulo = titulo;
         this.tituloVertical = tituloVertical;
         this.tituloHorizontal = tituloHorizontal;
         this.orientacao = orientacao;
+        this.rotulo = rotulo;
+        this.legenda = legenda;
     }
 
-    public CategoryDataset getDataSet() {
-        return dataSet;
-    }
+    public ChartPanel criarGrafico(){
 
-    public JFreeChart getChart() {
-        return chart;
-    }
+        ChartPanel painelDoGrafico = new ChartPanel(this.chart);
+        painelDoGrafico.setPreferredSize(new Dimension(400, 400));
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getTituloVertical() {
-        return tituloVertical;
-    }
-
-    public String getTituloHorizontal() {
-        return tituloHorizontal;
-    }
-
-    public PlotOrientation getOrientacao() {
-        return orientacao;
+        return painelDoGrafico;
     }
     
-    
-    
+
     public IComponente() {
     }
     

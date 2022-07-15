@@ -8,22 +8,10 @@ package Grafico.Decorator;
  *
  * @author jhonatan
  */
-public class Titulo extends GraficoDecorator{
+public class TituloHorizontal extends GraficoDecorator{
 
-    public Titulo(GraficoDecorator componente){
+    public TituloHorizontal(GraficoDecorator componente){
         super(componente);
-        this.titulo = "Titulo algum";
-    }
-    
-
-    @Override
-    public IComponente reverter() {
-        
-        return decoratedGrafico;
-    }
-
-
-    
-
-    
+        this.tituloHorizontal = "Titulo horizontal";
+    }    
 }

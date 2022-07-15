@@ -13,12 +13,7 @@ abstract class GraficoDecorator extends IComponente{
     protected IComponente decoratedGrafico;
 
     public GraficoDecorator(GraficoDecorator decoratedGrafico) {
-        super(decoratedGrafico.getDataSet(), 
-                decoratedGrafico.getChart(), 
-                decoratedGrafico.getTitulo(), 
-                decoratedGrafico.getTituloVertical(), 
-                decoratedGrafico.getTituloHorizontal(), 
-                decoratedGrafico.getOrientacao());
+        //super(decoratedGrafico.dataSet, decoratedGrafico.chart, decoratedGrafico.titulo, decoratedGrafico.tituloVertical, decoratedGrafico.tituloHorizontal, decoratedGrafico.orientacao);
         this.decoratedGrafico = decoratedGrafico;
     }
     
