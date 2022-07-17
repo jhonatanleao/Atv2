@@ -12,7 +12,7 @@ public class TituloHorizontal extends GraficoDecorator{
 
     public TituloHorizontal(IComponente componente){
         super(componente);
-        this.tituloHorizontal = "Titulo horizontal";
-        this.tituloVertical = "Titulo vertical";
+        this.tituloHorizontal = "Porcentagem";
+        this.tituloVertical = "Homem/Mulher";
     }    
 }

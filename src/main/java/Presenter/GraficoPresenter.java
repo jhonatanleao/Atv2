@@ -125,7 +125,7 @@ public class GraficoPresenter {
         this.view.getBntDesfazer().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                desfazer();                   
+                desfazer(grafico);                   
             }
         });
 
@@ -156,8 +156,6 @@ public class GraficoPresenter {
                 this.grafico.createBarChart();
                 view.getJpnGrafico().add(this.grafico.criarGrafico());  
                 view.pack();
-            } else {
-
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao acionar título " + e.getMessage());
@@ -173,8 +171,6 @@ public class GraficoPresenter {
                 this.grafico.createBarChart();
                 view.getJpnGrafico().add(this.grafico.criarGrafico());                
                 view.pack();
-            } else {
-
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao acionar a legenda " + e.getMessage());
@@ -189,8 +185,6 @@ public class GraficoPresenter {
                 this.grafico.createBarChart();
                 view.getJpnGrafico().add(this.grafico.criarGrafico());                
                 view.pack();
-            } else {
-
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao acionar título nos eixos" + e.getMessage());
@@ -205,8 +199,6 @@ public class GraficoPresenter {
                 this.grafico.createBarChart();
                 view.getJpnGrafico().add(this.grafico.criarGrafico());                
                 view.pack();
-            } else {
-
             }
         } catch (Exception e) {
             throw new RuntimeException("Erro ao acionar o rotulo " + e.getMessage());
@@ -237,8 +229,18 @@ public class GraficoPresenter {
 
     }
 
-    public void desfazer(){
-
+    public void desfazer(IComponente grafico){
+        try {
+            if (view.getCkBoxTituloEixos().isSelected()) {               
+                view.getJpnGrafico().removeAll();
+                this.grafico = this.grafico.reverter();
+                this.grafico.createBarChart();
+                view.getJpnGrafico().add(this.grafico.criarGrafico());                
+                view.pack();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao acionar o rotulo " + e.getMessage());
+        }
     }
 
     public void restaurarPadrao(){
