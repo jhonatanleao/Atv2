@@ -8,9 +8,14 @@ package Presenter;
 import Collections.PessoaCollection;
 import Grafico.Builder.Diretor;
 import Grafico.Builder.GraficoHorizontalBuilder;
+import Grafico.Builder.GraficoVerticalBuilder;
 import Grafico.Decorator.GraficoPessoa;
 import Grafico.Decorator.Titulo;
 import Grafico.Decorator.IComponente;
+import Grafico.Decorator.Legenda;
+import Grafico.Decorator.Rotulo;
+import Grafico.Decorator.TituloHorizontal;
+import Grafico.Decorator.TituloVertical;
 import Util.CSVUtil;
 import Util.Math.Estatistica;
 import Util.Math.PorcentagemCasados;
@@ -21,6 +26,7 @@ import View.GraficoView;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import org.jfree.chart.ChartPanel;
 
 /**
  *
@@ -38,7 +44,7 @@ public class GraficoPresenter {
         PessoaCollection pColletion = new PessoaCollection();
         pColletion = readCSV.read();
         Diretor diretor = new Diretor(new GraficoHorizontalBuilder());
-        GraficoPessoa grafico = new GraficoPessoa(); 
+        this.grafico = new GraficoPessoa(); 
         grafico = diretor.buildGrafico(totalCasados.realizaConta(pColletion.getPessoas()), totalSolteiros.realizaConta(pColletion.getPessoas()));
         grafico.criarGrafico();
         
@@ -50,28 +56,28 @@ public class GraficoPresenter {
         this.view.getCkBoxTitulo().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                titulo();
+                titulo(grafico);
             }
         });
 
         this.view.getCkBoxLegenda().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                legenda();
+                legenda(grafico);
             }
         });
 
         this.view.getCkBoxTituloEixos().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                tituloEixos();
+                tituloEixos(grafico);
             }
         });
 
         this.view.getCkBoxRotuloDadosPercentual().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                rotuloDadosPercentual();
+                rotuloDadosPercentual(grafico);
             }
         });
         this.view.getCkBoxRotuloDadosValor().addActionListener(new ActionListener(){
@@ -142,14 +148,14 @@ public class GraficoPresenter {
         view.setVisible(true);
     }
 
-
-    public void titulo(){
+    public void titulo(IComponente grafico){
         try {
-            if (view.getCkBoxTitulo().isSelected()) {
-                System.out.println(12);
-                grafico = new Titulo(grafico);
-                //view.getJpnGrafico().setLayout(new BorderLayout());
-                //view.getJpnGrafico().add(grafico.criarGrafico());
+            if (view.getCkBoxTitulo().isSelected()) {               
+                view.getJpnGrafico().removeAll();
+                this.grafico = new Titulo(grafico);
+                this.grafico.createBarChart();
+                view.getJpnGrafico().add(this.grafico.criarGrafico());  
+                view.pack();
             } else {
 
             }
@@ -159,16 +165,52 @@ public class GraficoPresenter {
 
     }
 
-    public void legenda(){
+    public void legenda(IComponente grafico){
+        try {
+            if (view.getCkBoxLegenda().isSelected()) {               
+                view.getJpnGrafico().removeAll();
+                this.grafico = new Legenda(grafico);
+                this.grafico.createBarChart();
+                view.getJpnGrafico().add(this.grafico.criarGrafico());                
+                view.pack();
+            } else {
 
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao acionar a legenda " + e.getMessage());
+        }
     }
 
-    public void tituloEixos(){
+    public void tituloEixos(IComponente grafico){
+        try {
+            if (view.getCkBoxTituloEixos().isSelected()) {               
+                view.getJpnGrafico().removeAll();
+                this.grafico = new TituloHorizontal(grafico);
+                this.grafico.createBarChart();
+                view.getJpnGrafico().add(this.grafico.criarGrafico());                
+                view.pack();
+            } else {
 
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao acionar título nos eixos" + e.getMessage());
+        }
     }
 
-    public void rotuloDadosPercentual(){
+    public void rotuloDadosPercentual(IComponente grafico){
+        try {
+            if (view.getCkBoxTituloEixos().isSelected()) {               
+                view.getJpnGrafico().removeAll();
+                this.grafico = new Rotulo(grafico);
+                this.grafico.createBarChart();
+                view.getJpnGrafico().add(this.grafico.criarGrafico());                
+                view.pack();
+            } else {
 
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Erro ao acionar o rotulo " + e.getMessage());
+        }
     }
 
     public void rotuloDadosValor(){

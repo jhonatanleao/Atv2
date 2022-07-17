@@ -14,7 +14,7 @@ import org.jfree.data.category.CategoryDataset;
  */
 public class Legenda extends GraficoDecorator{
 
-    public Legenda(GraficoDecorator grafico) {
+    public Legenda(IComponente grafico) {
         super(grafico);
         this.legenda = true;
     }

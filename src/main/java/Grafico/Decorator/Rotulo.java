@@ -10,8 +10,9 @@ package Grafico.Decorator;
  */
 public class Rotulo extends GraficoDecorator{
 
-    public Rotulo(GraficoDecorator grafico) {
+    public Rotulo(IComponente grafico) {
         super(grafico);
         this.rotulo = true;
+
     }    
 }

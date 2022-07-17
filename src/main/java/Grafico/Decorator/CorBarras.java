@@ -10,7 +10,7 @@ package Grafico.Decorator;
  */
 public class CorBarras extends GraficoDecorator{
 
-    public CorBarras(GraficoDecorator componente){
+    public CorBarras(IComponente componente){
         super(componente);
         this.legenda = true;
     }

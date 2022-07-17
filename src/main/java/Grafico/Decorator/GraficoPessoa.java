@@ -21,10 +21,18 @@ public class GraficoPessoa extends IComponente{
     }
     
     public GraficoPessoa(GraficoPessoa grafico) {
-        super();
+        super(grafico.dataSet, 
+                grafico.chart, 
+                grafico.titulo, 
+                grafico.tituloVertical, 
+                grafico.tituloHorizontal, 
+                grafico.orientacao,
+                grafico.rotulo,
+                grafico.legenda);
+        grafico = grafico;
+        
     }
-    
-    
+      
 
     public CategoryDataset getDataSet(){
         return dataSet;

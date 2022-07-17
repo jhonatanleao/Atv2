@@ -10,7 +10,7 @@ package Grafico.Decorator;
  */
 public class SemCor extends GraficoDecorator{
 
-    public SemCor(GraficoDecorator componente){
+    public SemCor(IComponente componente){
         super(componente);
         //this. = "Titulo algum";
     }    

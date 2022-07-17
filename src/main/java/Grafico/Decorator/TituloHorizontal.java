@@ -10,8 +10,9 @@ package Grafico.Decorator;
  */
 public class TituloHorizontal extends GraficoDecorator{
 
-    public TituloHorizontal(GraficoDecorator componente){
+    public TituloHorizontal(IComponente componente){
         super(componente);
         this.tituloHorizontal = "Titulo horizontal";
+        this.tituloVertical = "Titulo vertical";
     }    
 }

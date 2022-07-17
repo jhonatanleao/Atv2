@@ -43,10 +43,11 @@ public abstract class IComponente {
                 this.tituloVertical, 
                 this.tituloHorizontal, 
                 this.dataSet, 
-                this.orientacao, 
+                PlotOrientation.HORIZONTAL, 
                 this.legenda, 
                 this.rotulo, 
                 false);
+        
     }
     
     public ChartPanel criarGrafico(){       
